@@ -1,11 +1,11 @@
 package bbucket
 
 import (
-	"github.com/jinxmcg/quickbites"
-	"unsafe/pointer"
+//	"github.com/jinxmcg/quickbites"
+//	"unsafe"
 )
 
-conset (
+const (
 	DEFAULT_BUCKET_SIZE = 248
 	DEFAULT_NO_VALUES = 4000000 * DEFAULT_BUCKET_SIZE
 )
@@ -19,7 +19,7 @@ type bucket struct {
 	bucketId int 
 	content []byte //the bucket
 	maxValue int //max bucket bits
-	nextBucket unsafe.pointer	
+	nextBucket *bucket
 }
 
 func New() *BucketIndex {
@@ -33,6 +33,6 @@ func (b *BucketIndex) Len() int {
 func (b *BucketIndex) Cap() int {
 	return b.cap
 }
-func (b *BucketIndex) SetBit() uint64 {
+func (b *BucketIndex) SetBit() bool {
 	return true
 }
